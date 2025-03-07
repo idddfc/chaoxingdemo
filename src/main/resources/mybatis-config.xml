@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 将数据库下划线命名映射为驼峰命名 -->
+    <settings>
+        <setting name="mapUnderscoreToCamelCase" value="true" />
+    </settings>
+
+    <!-- 配置实体类别名，指定扫描包 -->
+    <typeAliases>
+        <package name="com.hangzhoudianzi.demo.pojo" />
+    </typeAliases>
+
+    <!-- 指定 Mapper XML 文件的位置 -->
+    <mappers>
+        <mapper resource="mapper/TeacherMapper.xml"/>
+        <mapper resource="mapper/CourseMapper.xml"/>
+        <mapper resource="mapper/ClassroomMapper.xml"/>
+        <mapper resource="mapper/TimetableMapper.xml"/>
+        <mapper resource="mapper/SchedulingStrategyMapper.xml"/>
+        <mapper resource="mapper/UserMapper.xml"/>
+    </mappers>
+
+</configuration>

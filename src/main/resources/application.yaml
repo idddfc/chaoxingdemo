@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: application
+
+  datasource:
+    url: jdbc:mysql://47.94.171.221:3306/chaoxing
+    username: root
+    password: z31415926sw
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  check-config-location: true
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  #  global-config:
+  #    db-config:
+  #      id-type: auto
+  #      logic-delete-value: 1
+  #      logic-not-delete-value: 0
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  type-aliases-package: com.hangzhoudianzi.demo.pojo

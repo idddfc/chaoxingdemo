@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--xmlns="http://mybatis.org/schema/mybatis-mapper"-->
+<mapper namespace="com.hangzhoudianzi.demo.mapper.UserMapper">
+    <select id="findAll" resultType="com.hangzhoudianzi.demo.pojo.people.User">
+        select *
+        from user
+    </select>
+    <select id="findByName" resultType="com.hangzhoudianzi.demo.pojo.people.User">
+        select *
+        from user
+        where username = #{username}
+    </select>
+    <select id="findPswByName" resultType="java.lang.String">
+        select password
+        from user
+        where username = #{username}
+    </select>
+    <insert id="save">
+        insert into user(username, password) value (#{username},#{password})
+    </insert>
+</mapper>

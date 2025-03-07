@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hangzhoudianzi.demo.mapper.TeacherMapper">
+
+    <!-- 定义结果映射，将数据库字段与 POJO 属性映射 -->
+    <resultMap id="TeacherResultMap" type="Teacher">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="department" column="department" />
+    </resultMap>
+
+
+
+    <!-- 根据ID查询教师 -->
+    <select id="getTeacherById" resultType="com.hangzhoudianzi.demo.pojo.people.Teacher">
+<!--        SELECT *-->
+<!--        FROM teacher-->
+<!--        <where>-->
+<!--            <if test="id != null">-->
+<!--                id = #{id}-->
+<!--            </if>-->
+<!--            <if test="name!= null">-->
+<!--                and name like concat('%',#{name}, '%')-->
+<!--            </if>-->
+<!--            <if test="department!= null">-->
+<!--                and department like concat('%',#{department}, '%')-->
+<!--            </if>-->
+<!--        </where>-->
+    select * from teacher where id = #{id}
+    </select>
+
+<!--    &lt;!&ndash; 新增教师 &ndash;&gt;-->
+<!--    <insert id="insertTeacher" parameterType="Teacher">-->
+<!--        INSERT INTO teacher (id, name, department)-->
+<!--        VALUES (#{id}, #{name}, #{department})-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash; 更新教师 &ndash;&gt;-->
+<!--    <update id="updateTeacher" parameterType="Teacher">-->
+<!--        UPDATE teacher-->
+<!--        SET name = #{name},-->
+<!--            department = #{department}-->
+<!--        WHERE id = #{id}-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash; 删除教师 &ndash;&gt;-->
+<!--    <delete id="deleteTeacher" parameterType="int">-->
+<!--        DELETE FROM teacher WHERE id = #{id}-->
+<!--    </delete>-->
+
+</mapper>

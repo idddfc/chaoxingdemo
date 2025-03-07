@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hangzhoudianzi.demo.mapper.CourseMapper">
+
+    <resultMap id="CourseResultMap" type="Course">
+        <id property="id" column="id" />
+        <result property="courseId" column="course_id"/>
+        <result property="courseName" column="course_name" />
+        <result property="credit" column="credit" />
+        <result property="teacherId" column="teacher_id" />
+    </resultMap>
+
+
+    <!-- 根据ID查询课程 -->
+    <select id="getCourseById" resultType="com.hangzhoudianzi.demo.pojo.people.Course">
+<!--        SELECT *-->
+<!--        FROM course-->
+<!--        <where>-->
+<!--            <if test="id != null">-->
+<!--                id = #{id}-->
+<!--            </if>-->
+<!--            <if test="course_name!= null">-->
+<!--                and course_name like concat('%',#{course_name}, '%')-->
+<!--            </if>-->
+<!--            <if test="credit!= null">-->
+<!--                and credit like =#{credit}-->
+<!--            </if>-->
+<!--            <if test="teacher_id!= null">-->
+<!--                and teacher_id like concat('%',#{teacher_id}, '%')-->
+<!--            </if>-->
+<!--        </where>-->
+        select * from course where course_id = #{course_id}
+    </select>
+
+<!--    &lt;!&ndash; 新增课程 &ndash;&gt;-->
+<!--    <insert id="insertCourse" parameterType="Course">-->
+<!--        INSERT INTO course (id, course_name, credit, teacher_id)-->
+<!--        VALUES (#{id}, #{courseName}, #{credit}, #{teacherId})-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash; 更新课程 &ndash;&gt;-->
+<!--    <update id="updateCourse" parameterType="Course">-->
+<!--        UPDATE course-->
+<!--        SET course_name = #{courseName},-->
+<!--            credit = #{credit},-->
+<!--            teacher_id = #{teacherId}-->
+<!--        WHERE id = #{id}-->
+<!--    </update>-->
+
+<!--    &lt;!&ndash; 删除课程 &ndash;&gt;-->
+<!--    <delete id="deleteCourse" parameterType="int">-->
+<!--        DELETE FROM course WHERE id = #{id}-->
+<!--    </delete>-->
+
+</mapper>
