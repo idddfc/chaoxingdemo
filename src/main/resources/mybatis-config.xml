@@ -19,7 +19,7 @@
         <mapper resource="mapper/CourseMapper.xml"/>
         <mapper resource="mapper/ClassroomMapper.xml"/>
         <mapper resource="mapper/TimetableMapper.xml"/>
-        <mapper resource="mapper/SchedulingStrategyMapper.xml"/>
+        <mapper resource="mapper/SchedulingSettingsMapper.xml"/>
         <mapper resource="mapper/UserMapper.xml"/>
     </mappers>
 

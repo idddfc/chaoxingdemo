@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hangzhoudianzi.demo.mapper.ScheduleSettingsMapper">
+
+    <!-- 定义结果映射：将数据库字段与 POJO 属性对应 -->
+    <resultMap id="ScheduleSettingsResultMap" type="com.hangzhoudianzi.demo.pojo.resource.ScheduleSettings">
+        <id property="id" column="id"/>
+        <result property="schedulingUnit" column="scheduling_unit"/>
+        <result property="totalPeriodsPerDay" column="total_periods_per_day"/>
+        <result property="twoPeriodBlockStart" column="two_period_block_start" typeHandler="com.hangzhoudianzi.demo.CommaSeparatedIntegerListTypeHandler"/>
+        <result property="fourPeriodBlockStart" column="four_period_block_start" typeHandler="com.hangzhoudianzi.demo.CommaSeparatedIntegerListTypeHandler"/>
+        <result property="banBySchool" column="ban_by_school"/>
+        <result property="banByTeacher" column="ban_by_teacher"/>
+        <result property="banByStudent" column="ban_by_student"/>
+        <result property="banByCourse" column="ban_by_course"/>
+        <result property="banByClassroom" column="ban_by_classroom"/>
+        <result property="banByRole" column="ban_by_role"/>
+        <result property="studentDepartmentPriority" column="student_department_priority"/>
+        <result property="courseDepartmentPriority" column="course_department_priority"/>
+        <result property="courseNaturePriority" column="course_nature_priority"/>
+        <result property="creditTypePriority" column="credit_type_priority"/>
+        <result property="courseTypePriority" column="course_type_priority"/>
+        <result property="useFixedClassroom" column="use_fixed_classroom"/>
+        <result property="concentrateClassroomForClass" column="concentrate_classroom_for_class"/>
+        <result property="concentrateClassroomForTeacher" column="concentrate_classroom_for_teacher"/>
+        <result property="sameClassroomForSameCourse" column="same_classroom_for_same_course"/>
+        <result property="teacherMaxPeriodsPerDay" column="teacher_max_periods_per_day"/>
+        <result property="teacherMaxPeriodsPerWeek" column="teacher_max_periods_per_week"/>
+        <result property="teacherMaxMorningPeriods" column="teacher_max_morning_periods"/>
+        <result property="teacherMaxAfternoonPeriods" column="teacher_max_afternoon_periods"/>
+        <result property="peClassAfternoonOnly" column="pe_class_afternoon_only"/>
+        <result property="scheduleAfterPeClass" column="schedule_after_pe_class"/>
+        <result property="eveningClasses" column="evening_classes"/>
+        <result property="labClassEveningOnly" column="lab_class_evening_only"/>
+        <result property="multiHourClassesConsecutive" column="multi_hour_classes_consecutive"/>
+        <result property="insufficientArrangementMethod" column="insufficient_arrangement_method"/>
+        <result property="scheduleSelectedCoursesFirst" column="schedule_selected_courses_first"/>
+        <result property="clearPreviousScheduleOnAuto" column="clear_previous_schedule_on_auto"/>
+        <result property="autoScheduleAssignLocation" column="auto_schedule_assign_location"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updatedAt" column="updated_at"/>
+    </resultMap>
+
+    <!-- 根据ID查询 -->
+    <select id="getScheduleSettingsById" parameterType="int" resultMap="ScheduleSettingsResultMap">
+        SELECT * FROM schedule_settings WHERE id = #{id}
+    </select>
+
+    <!-- 查询所有配置 -->
+    <select id="getAllScheduleSettings" resultMap="ScheduleSettingsResultMap">
+        SELECT * FROM schedule_settings
+    </select>
+
+    <!-- 插入配置 -->
+    <insert id="insertScheduleSettings" parameterType="com.hangzhoudianzi.demo.pojo.resource.ScheduleSettings">
+        INSERT INTO schedule_settings (
+            scheduling_unit, total_periods_per_day, two_period_block_start, four_period_block_start,
+            ban_by_school, ban_by_teacher, ban_by_student, ban_by_course, ban_by_classroom, ban_by_role,
+            student_department_priority, course_department_priority, course_nature_priority, credit_type_priority, course_type_priority,
+            use_fixed_classroom, concentrate_classroom_for_class, concentrate_classroom_for_teacher, same_classroom_for_same_course,
+            teacher_max_periods_per_day, teacher_max_periods_per_week, teacher_max_morning_periods, teacher_max_afternoon_periods,
+            pe_class_afternoon_only, schedule_after_pe_class, evening_classes, lab_class_evening_only, multi_hour_classes_consecutive,
+            insufficient_arrangement_method, schedule_selected_courses_first, clear_previous_schedule_on_auto, auto_schedule_assign_location,created_at, updated_at
+        ) VALUES (
+                     #{schedulingUnit}, #{totalPeriodsPerDay}, #{twoPeriodBlockStart,typeHandler=com.hangzhoudianzi.demo.CommaSeparatedIntegerListTypeHandler}, #{fourPeriodBlockStart,typeHandler=com.hangzhoudianzi.demo.CommaSeparatedIntegerListTypeHandler},
+                     #{banBySchool}, #{banByTeacher}, #{banByStudent}, #{banByCourse}, #{banByClassroom}, #{banByRole},
+                     #{studentDepartmentPriority}, #{courseDepartmentPriority}, #{courseNaturePriority}, #{creditTypePriority}, #{courseTypePriority},
+                     #{useFixedClassroom}, #{concentrateClassroomForClass}, #{concentrateClassroomForTeacher}, #{sameClassroomForSameCourse},
+                     #{teacherMaxPeriodsPerDay}, #{teacherMaxPeriodsPerWeek}, #{teacherMaxMorningPeriods}, #{teacherMaxAfternoonPeriods},
+                     #{peClassAfternoonOnly}, #{scheduleAfterPeClass}, #{eveningClasses}, #{labClassEveningOnly}, #{multiHourClassesConsecutive},
+                     #{insufficientArrangementMethod}, #{scheduleSelectedCoursesFirst}, #{clearPreviousScheduleOnAuto}, #{autoScheduleAssignLocation},#{createdAt},#{updatedAt}
+                 )
+    </insert>
+
+    <!-- 更新配置 -->
+    <update id="updateScheduleSettings" parameterType="com.hangzhoudianzi.demo.pojo.resource.ScheduleSettings">
+        UPDATE schedule_settings
+        SET
+            scheduling_unit = #{schedulingUnit},
+            total_periods_per_day = #{totalPeriodsPerDay},
+            two_period_block_start = #{twoPeriodBlockStart,typeHandler=com.hangzhoudianzi.demo.CommaSeparatedIntegerListTypeHandler},
+            four_period_block_start = #{fourPeriodBlockStart,typeHandler=com.hangzhoudianzi.demo.CommaSeparatedIntegerListTypeHandler},
+            ban_by_school = #{banBySchool},
+            ban_by_teacher = #{banByTeacher},
+            ban_by_student = #{banByStudent},
+            ban_by_course = #{banByCourse},
+            ban_by_classroom = #{banByClassroom},
+            ban_by_role = #{banByRole},
+            student_department_priority = #{studentDepartmentPriority},
+            course_department_priority = #{courseDepartmentPriority},
+            course_nature_priority = #{courseNaturePriority},
+            credit_type_priority = #{creditTypePriority},
+            course_type_priority = #{courseTypePriority},
+            use_fixed_classroom = #{useFixedClassroom},
+            concentrate_classroom_for_class = #{concentrateClassroomForClass},
+            concentrate_classroom_for_teacher = #{concentrateClassroomForTeacher},
+            same_classroom_for_same_course = #{sameClassroomForSameCourse},
+            teacher_max_periods_per_day = #{teacherMaxPeriodsPerDay},
+            teacher_max_periods_per_week = #{teacherMaxPeriodsPerWeek},
+            teacher_max_morning_periods = #{teacherMaxMorningPeriods},
+            teacher_max_afternoon_periods = #{teacherMaxAfternoonPeriods},
+            pe_class_afternoon_only = #{peClassAfternoonOnly},
+            schedule_after_pe_class = #{scheduleAfterPeClass},
+            evening_classes = #{eveningClasses},
+            lab_class_evening_only = #{labClassEveningOnly},
+            multi_hour_classes_consecutive = #{multiHourClassesConsecutive},
+            insufficient_arrangement_method = #{insufficientArrangementMethod},
+            schedule_selected_courses_first = #{scheduleSelectedCoursesFirst},
+            clear_previous_schedule_on_auto = #{clearPreviousScheduleOnAuto},
+            auto_schedule_assign_location = #{autoScheduleAssignLocation}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除配置 -->
+    <delete id="deleteScheduleSettings" parameterType="int">
+        DELETE FROM schedule_settings WHERE id = #{id}
+    </delete>
+
+</mapper>

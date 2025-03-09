@@ -4,12 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
 import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class ScheduleSettings {
+    private Integer id;
     // ① 排课的最小单位（默认：教学班）
     private String schedulingUnit;  // 例如："teaching_class"
 
@@ -77,6 +79,10 @@ public class ScheduleSettings {
 
     // ⑯ 自动排课时是否需要安排地点
     private boolean autoScheduleAssignLocation;
+
+    private Date createdAt;
+
+    private Date updatedAt;
 
     // ⑰ 关于排课监控、⑱ 排课结果下载等功能通常由系统运行时数据统计与导出模块实现，
     //     这里不作为配置项存储在设置中，可单独设计监控模块。
