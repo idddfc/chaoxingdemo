@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * 这是注释
+ */
 @RestController
 @RequestMapping("/api/schedulesettings")
 public class ScheduleSettingsController {
