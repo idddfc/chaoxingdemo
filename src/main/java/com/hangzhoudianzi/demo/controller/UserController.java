@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController         //@RestController = @Controller + @ResponseBody:
 @RequestMapping("/user")
+@CrossOrigin // 允许跨域请求
 public class UserController {
     @Autowired
     UserService userService;
